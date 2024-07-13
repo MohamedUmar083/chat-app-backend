@@ -36,7 +36,7 @@ const httpServer = createServer(app);
 const io = new Server(httpServer, {
   pingTimeout: 60000,
   cors: {
-    origin: "*",
+    origin: "https://chat-a-gram.netlify.app/",
     methods: ["GET", "POST"],
     // credentials: true,
   },

@@ -14,12 +14,7 @@ connectDB();
 const app = express();
 
 app.use(express.json());
-// app.use(
-//   cors({
-//     origin: "*",
-//     credentials: true,
-//   })
-// );
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Api Working Good");
@@ -37,7 +32,7 @@ const io = new Server(httpServer, {
   pingTimeout: 60000,
   cors: {
     origin: "*",
-    methods: ["GET", "POST"],
+    //methods: ["GET", "POST"],
     // credentials: true,
   },
 });

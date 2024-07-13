@@ -14,12 +14,12 @@ connectDB();
 const app = express();
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: "*",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "*",
+//     credentials: true,
+//   })
+// );
 
 app.get("/", (req, res) => {
   res.send("Api Working Good");
@@ -36,7 +36,7 @@ const httpServer = createServer(app);
 const io = new Server(httpServer, {
   pingTimeout: 60000,
   cors: {
-    origin: "https://chat-a-gram.netlify.app/",
+    origin: "*",
     methods: ["GET", "POST"],
     // credentials: true,
   },

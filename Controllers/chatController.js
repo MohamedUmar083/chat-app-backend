@@ -42,9 +42,7 @@ export const accessChat = async (req, res) => {
         "users",
         "-password"
       );
-      res
-        .status(200)
-        .json({ message: "Chat Created Successfully", data: FullChat });
+      res.status(200).send(FullChat);
     } catch (error) {
       console.log(error);
       res.status(500).json({ message: "Error Creating Chat" });

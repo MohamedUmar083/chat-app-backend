@@ -7,13 +7,13 @@ dontenv.config();
 
 export const registerUser = async (req, res) => {
   try {
-    const { username, email, password } = req.body;
+    const { username, email, confirmpassword } = req.body;
     const userExists = await User.findOne({ email });
     if (userExists) {
       return res.status(400).json({ message: "User Already Exists" });
     }
 
-    const hash = await bcrypt.hash(password, 10);
+    const hash = await bcrypt.hash(confirmpassword, 10);
 
     const newUser = await User({ username, email, password: hash });
 

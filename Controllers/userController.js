@@ -8,9 +8,15 @@ dontenv.config();
 export const registerUser = async (req, res) => {
   try {
     const { username, email, confirmpassword } = req.body;
-    const userExists = await User.findOne({ email });
+    const emailExists = await User.findOne({ email });
+    const userExists = await User.findOne({ username });
+
+    if (emailExists) {
+      return res.status(400).json({ message: "Email Already Exists" });
+    }
+
     if (userExists) {
-      return res.status(400).json({ message: "User Already Exists" });
+      return res.status(400).json({ message: "Username Already Taken" });
     }
 
     const hash = await bcrypt.hash(confirmpassword, 10);
